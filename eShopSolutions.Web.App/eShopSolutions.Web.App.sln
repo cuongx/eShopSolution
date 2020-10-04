@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolutions.Web.App", "eShopSolutions.Web.App\eShopSolutions.Web.App.csproj", "{1D7EA358-18C1-454A-A1D1-8E47E92749A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolutions.Web.App", "eShopSolutions.Web.App\eShopSolutions.Web.App.csproj", "{1D7EA358-18C1-454A-A1D1-8E47E92749A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolutions.Data", "..\eShopSolutions.Application\eShopSolutions.Data.csproj", "{1BE1B79D-CCC2-4065-AAEB-3DF1D6C94642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolutions.Application", "..\eShopSolutions.Application\eShopSolutions.Application.csproj", "{1BE1B79D-CCC2-4065-AAEB-3DF1D6C94642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolutions.Domain", "..\eShopSolutions.Domain\eShopSolutions.Domain.csproj", "{4A087943-4EC7-4F6F-B715-10D0A2C0FC8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolutions.Domain", "..\eShopSolutions.Domain\eShopSolutions.Domain.csproj", "{4A087943-4EC7-4F6F-B715-10D0A2C0FC8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
