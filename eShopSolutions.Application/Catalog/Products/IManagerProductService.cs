@@ -13,13 +13,14 @@ namespace eShopSolutions.Application.Catalog.Products
     public interface IManagerProductService
     {
        Task<int> Create(ProductCreateRequest request);
-        Task<int> Update(ProductEditRequest request);
+        Task<int> Update(ProductUpdateRequest request);
         Task<int> Delete(int id);
+        Task<ProductViewsModel> GetById(int productId);
         Task<bool> UpdatePrice(int productId, decimal newPrice);
         Task  AddViewsCount(int productId);
         Task<bool> UpdateStock(int productId, int addQuantity);
         Task<List<ProductViewsModel>> GetAll();
-      Task<PagedResult<ProductViewsModel>> GetAllPaging(GetProductPagingRequests request);
+      Task<PagedResult<ProductViewsModel>> GetAllPaging(GetPublicProductPagingRequests request);
         Task<int> AddImages(int productId, List<IFormFile> file);
         Task<int> RemoveImages(int imageId);
         Task<int> UpdateImages(int imageId,string caption, bool isDelful);

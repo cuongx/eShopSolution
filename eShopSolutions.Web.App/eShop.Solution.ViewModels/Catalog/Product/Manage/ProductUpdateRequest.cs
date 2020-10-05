@@ -6,7 +6,7 @@ using System.Text;
 
 namespace eShop.Solution.ViewModels.Catalog.Product.Manage
 {
-    public class ProductEditRequest
+    public class ProductUpdateRequest
     {
 
         public int Id { set; get; }

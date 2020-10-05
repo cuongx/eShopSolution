@@ -20,7 +20,33 @@ namespace eShopSolutions.Application.Catalog.Products
             this.context = context;
         }
 
-        public async Task<PagedResult<ProductViewsModel>> GetAllByCategoryId(GetProductPagingRequests request)
+        public async Task<List<ProductViewsModel>> GetAll()
+        {
+            var query = from p in context.Products
+                        join pt in context.ProductTranslations on p.Id equals pt.ProductId
+                        join pic in context.ProductInCategorys on p.Id equals pic.ProductId
+                        join c in context.Categories on pic.CategoryId equals c.Id
+                        select new { p, pt, pic };
+            var data = await query.Select(x => new ProductViewsModel()
+               {
+                   Id = x.p.Id,
+                   Name = x.pt.Name,
+                   DateCreated = x.p.DateCreated,
+                   Description = x.pt.Description,
+                   Details = x.pt.Details,
+                   LanguageId = x.pt.LanguageId,
+                   OriginalPrice = x.p.OriginalPrice,
+                   Price = x.p.Price,
+                   SeoAlias = x.pt.SeoAlias,
+                   SeoDescription = x.pt.SeoDescription,
+                   SeoTitle = x.pt.SeoTitle,
+                   Stock = x.p.Stock,
+                   ViewCount = x.p.ViewCount
+               }).ToListAsync();
+            return data;
+        }
+
+        public async Task<PagedResult<ProductViewsModel>> GetAllByCategoryId(GetPublicProductPagingRequests request)
         {
             var query = from p in context.Products
                         join pt in context.ProductTranslations on p.Id equals pt.ProductId

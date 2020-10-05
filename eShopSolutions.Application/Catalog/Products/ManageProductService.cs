@@ -103,7 +103,7 @@ namespace eShopSolutions.Application.Catalog.Products
             throw new NotImplementedException();
         }
 
-        public async Task<PagedResult<ProductViewsModel>> GetAllPaging(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewsModel>> GetAllPaging(GetManageProductPagingRequest request)
         {
             var query = from p in context.Products
                         join pt in context.ProductTranslations on p.Id equals pt.ProductId
@@ -149,7 +149,7 @@ namespace eShopSolutions.Application.Catalog.Products
             return pagedResult;
         }
 
-        public Task<PagedResult<ProductViewsModel>> GetAllPaging(GetProductPagingRequests request)
+        public Task<PagedResult<ProductViewsModel>> GetAllPaging(GetPublicProductPagingRequests request)
         {
             throw new NotImplementedException();
         }
@@ -164,7 +164,7 @@ namespace eShopSolutions.Application.Catalog.Products
             throw new NotImplementedException();
         }
 
-        public async Task<int> Update(ProductEditRequest request)
+        public async Task<int> Update(ProductUpdateRequest request)
         {
             var product = await context.Products.FindAsync(request.Id);
             var productTranslation = await context.ProductTranslations.FirstOrDefaultAsync(a => a.Id == request.Id && a.LanguageId == request.LanguageId);
