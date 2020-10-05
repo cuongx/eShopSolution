@@ -26,4 +26,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\eShopSolutions.Web.App\eShop.Solutions.Utilities\eShop.Solutions.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>

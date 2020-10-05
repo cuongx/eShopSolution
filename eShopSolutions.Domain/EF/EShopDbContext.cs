@@ -18,9 +18,9 @@ using System.Transactions;
 
 namespace eShopSolutions.Domain.EF
 {
-  public class AppDbContext: IdentityDbContext<AppUser,AppRole,Guid>
+  public class EShopDbContext: IdentityDbContext<AppUser,AppRole,Guid>
     {
-        public AppDbContext(DbContextOptions options) : base(options)
+        public EShopDbContext(DbContextOptions options) : base(options)
         {
 
         }

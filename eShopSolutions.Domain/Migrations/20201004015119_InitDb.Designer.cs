@@ -9,7 +9,7 @@ using eShopSolutions.Domain.EF;
 
 namespace eShopSolutions.Domain.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(EShopDbContext))]
     [Migration("20201004015119_InitDb")]
     partial class InitDb
     {
