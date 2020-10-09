@@ -9,7 +9,7 @@ namespace eShopSolutions.Application.Catalog.Products
 {
     public interface IPublicProductService
     {
-        public Task<PagedResult<ProductViewsModel>> GetAllByCategoryId(GetPublicProductPagingRequests request);
-        Task<List<ProductViewsModel>> GetAll();
+        public Task<PagedResult<ProductViewsModel>> GetAllByCategoryId(string languageId ,GetPublicProductPagingRequests request);
+        public Task<List<ProductViewsModel>> GetAll(string languageId);
     }
 }

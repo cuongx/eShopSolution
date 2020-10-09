@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eShopSolutions.Application.Catalog.Common;
 using eShopSolutions.Application.Catalog.Products;
 using eShopSolutions.Domain.EF;
 using Microsoft.AspNetCore.Builder;
@@ -28,8 +29,10 @@ namespace eShop.Solution.BackenAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<EShopDbContext>(options => options.UseSqlServer(Common.ConnectionString));
-            services.AddScoped<IPublicProductService, PublicProductService>();
+            services.AddDbContext<EShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("eShopSolutionDb")));
+            services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddScoped<IManagerProductService, ManageProductService>();
+            services.AddScoped<IStorageService, FileStorageService>();
             services.AddSwaggerGen();
         }
 

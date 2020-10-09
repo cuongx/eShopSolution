@@ -20,12 +20,13 @@ namespace eShopSolutions.Application.Catalog.Products
             this.context = context;
         }
 
-        public async Task<List<ProductViewsModel>> GetAll()
+        public async Task<List<ProductViewsModel>> GetAll(string languageId)
         {
             var query = from p in context.Products
                         join pt in context.ProductTranslations on p.Id equals pt.ProductId
                         join pic in context.ProductInCategorys on p.Id equals pic.ProductId
                         join c in context.Categories on pic.CategoryId equals c.Id
+                        where pt.LanguageId == languageId
                         select new { p, pt, pic };
             var data = await query.Select(x => new ProductViewsModel()
                {
@@ -46,12 +47,13 @@ namespace eShopSolutions.Application.Catalog.Products
             return data;
         }
 
-        public async Task<PagedResult<ProductViewsModel>> GetAllByCategoryId(GetPublicProductPagingRequests request)
+        public async Task<PagedResult<ProductViewsModel>> GetAllByCategoryId(string languageId,GetPublicProductPagingRequests request)
         {
             var query = from p in context.Products
                         join pt in context.ProductTranslations on p.Id equals pt.ProductId
                         join pic in context.ProductInCategorys on p.Id equals pic.ProductId
                         join c in context.Categories on pic.CategoryId equals c.Id
+                        where pt.LanguageId == languageId
                         select new { p, pt, pic };
        
 
