@@ -23,6 +23,7 @@ namespace eShop.Solution.BackenAPI.Controllers
             this.managerProductService = managerProductService;
         }
        [HttpPost]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -32,20 +33,21 @@ namespace eShop.Solution.BackenAPI.Controllers
             var productId = await managerProductService.Create(request);
             if (productId == 0)
                 return BadRequest();
-
+      
             var product = await managerProductService.GetById(productId, request.LanguageId);
 
             return CreatedAtAction(nameof(GetbyId), new { id = productId }, product);
         }
         //[NonAction]
-        [HttpGet("{languageId}")]
-    
+   
+        [HttpGet("public-paging/{languageId}")]
         public async Task<IActionResult> GetAll(string languageId)
         {
             var product = await publicProductService.GetAll(languageId);
             return Ok(product);
         }
-        [HttpGet("public-paging/{languageId}")]
+       
+        [HttpGet("{LanguageId}")]
         public async Task<IActionResult> GetAllPaging(string LanguageId, [FromQuery] GetPublicProductPagingRequests requests)
         {
             var product = await publicProductService.GetAllByCategoryId(LanguageId,requests);
