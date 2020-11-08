@@ -47,7 +47,7 @@ namespace eShop.Solution.BackenAPI.Controllers
             {
                 return BadRequest("Register is unsucessful");
             }
-            return Ok();
+            return Ok("Register sucscess");
         }
 
     }
